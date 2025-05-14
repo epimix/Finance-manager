@@ -24,6 +24,7 @@ namespace TeamProject
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("work!");
+            Console.WriteLine("asdsd");
         }
     }
 }
