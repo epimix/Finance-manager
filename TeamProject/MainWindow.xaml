@@ -5,8 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="900">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10" Background="#FF8EB5FF">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <Label Content="Enter amount:" VerticalAlignment="Center" Width="120" FontSize="16" FontWeight="Bold" Foreground="White" />
+                <TextBox BorderThickness="2" x:Name="UrlTextBox" Width="120" Height="25" BorderBrush="#FF2D75FF"/>
+                <ComboBox BorderThickness="2" x:Name="CategoryBox" Width="150" Margin="5">
+                    <ComboBoxItem Content="Food"/>
+                    <ComboBoxItem Content="Transport"/>
+                    <ComboBoxItem Content="Salary"/>
+                    <ComboBoxItem Content="Other"/>
+                </ComboBox>
+                <ComboBox BorderThickness="2" x:Name="TypeBox" Width="100" Margin="5" BorderBrush="#FF2D75FF">
+                    <ComboBoxItem Content="Income"/>
+                    <ComboBoxItem Content="Expense"/>
+                </ComboBox>
+                <Label Content="Enter note:" VerticalAlignment="Center" Width="100" FontSize="16" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="NoteBox" BorderThickness="2" Width="150" Height="25" BorderBrush="#FF2D75FF"/>
+                <Button BorderThickness="2" Content="Add" Width="90" Margin="10,0,10,0" FontSize="16" FontWeight="Bold" BorderBrush="#FF2D75FF" Background="#FFF1F6FF"/>
+
+            </StackPanel>
+
+
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
+            <TextBox x:Name="SearchTextBox" Width="300" Height="25" Margin="0,0,10,0" BorderBrush="#FF2D75FF" BorderThickness="2"/>
+            <ComboBox x:Name="FilterComboBox" Width="150" SelectedIndex="0" >
+                <ComboBoxItem>Category</ComboBoxItem>
+                <ComboBoxItem>Category</ComboBoxItem>
+                <ComboBoxItem>Category</ComboBoxItem>
+                <ComboBoxItem>Category</ComboBoxItem>
+
+            </ComboBox>
+        </StackPanel>
+
+        <ListBox HorizontalContentAlignment="Stretch"
+         x:Name="DownloadsListBox"
+         Grid.Row="2"
+         FontSize="16"
+         Background="#FFF1F6FF"
+         Foreground="#FF0D3686"
+         BorderBrush="#FF2D75FF"
+         BorderThickness="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="4" Padding="6" BorderThickness="1" BorderBrush="#FF2D75FF" CornerRadius="6">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Date}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Amount}" />
+                            <TextBlock Text="{Binding Category}" />
+                            <TextBlock Text="{Binding Note}" FontStyle="Italic"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
     </Grid>
 </Window>
