@@ -29,7 +29,7 @@
                 </ComboBox>
                 <Label Content="Enter note:" VerticalAlignment="Center" Width="100" FontSize="16" FontWeight="Bold" Foreground="White"/>
                 <TextBox x:Name="NoteBox" BorderThickness="2" Width="150" Height="25" BorderBrush="#FF2D75FF"/>
-                <Button BorderThickness="2" Content="Add" Width="90" Margin="10,0,10,0" FontSize="16" FontWeight="Bold" BorderBrush="#FF2D75FF" Background="#FFF1F6FF"/>
+                <Button Click="Add_Btn" BorderThickness="2" Content="Add" Width="90" Margin="10,0,10,0" FontSize="16" FontWeight="Bold" BorderBrush="#FF2D75FF" Background="#FFF1F6FF"/>
 
             </StackPanel>
 
