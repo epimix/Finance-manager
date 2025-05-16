@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamProject", "TeamProject\TeamProject.csproj", "{1FD7961E-1EC2-4C28-942C-3D087555BA42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "registration\Login.csproj", "{B6C36E27-83A6-4691-A6A3-F107BDA353A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Register", "reg\Register.csproj", "{EE2130E8-FA4E-4D0F-BB1B-0FACB42F28A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{1FD7961E-1EC2-4C28-942C-3D087555BA42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FD7961E-1EC2-4C28-942C-3D087555BA42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD7961E-1EC2-4C28-942C-3D087555BA42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6C36E27-83A6-4691-A6A3-F107BDA353A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C36E27-83A6-4691-A6A3-F107BDA353A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C36E27-83A6-4691-A6A3-F107BDA353A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C36E27-83A6-4691-A6A3-F107BDA353A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE2130E8-FA4E-4D0F-BB1B-0FACB42F28A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2130E8-FA4E-4D0F-BB1B-0FACB42F28A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2130E8-FA4E-4D0F-BB1B-0FACB42F28A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2130E8-FA4E-4D0F-BB1B-0FACB42F28A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
