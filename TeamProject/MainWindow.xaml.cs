@@ -38,43 +38,49 @@ namespace TeamProject
         {
             try
             {
-
                 var selectedCategory = (FilterComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
-                string searchTextBox = SearchTextBox.Text;
+                var selectedPriceFilter = (FilterComboBoxByPrice.SelectedItem as ComboBoxItem)?.Content.ToString();
+                string searchTextBox = SearchTextBox.Text.ToLower();
                 DownloadsListBox.Items.Clear();
 
-                if (selectedCategory == "All")
+                IEnumerable<Transaction> filtered = AllTran;
+
+
+                if (selectedCategory != "All")
                 {
-                    if (string.IsNullOrWhiteSpace(searchTextBox))
-                    {
-                        foreach (var t in AllTran)
-                            DownloadsListBox.Items.Add(t);
-                    }
-                    else
-                    {
-                        foreach (var t in AllTran)
-                            if (t.Note.ToLower().Contains(searchTextBox))
-                                DownloadsListBox.Items.Add(t);
-                    }
+                    filtered = filtered.Where(t => t.Category == selectedCategory);
                 }
-                else
+
+
+                if (!string.IsNullOrWhiteSpace(searchTextBox))
                 {
-                    if (string.IsNullOrWhiteSpace(searchTextBox))
-                    {
-                        var filtered = AllTran.Where(t => t.Category == selectedCategory);
-                        foreach (var t in filtered)
-                            DownloadsListBox.Items.Add(t);
-                    }
-                    else
-                    {
-                        var filtered = AllTran.Where(t => t.Category == selectedCategory);
-                        foreach (var t in filtered)
-                            if (t.Note.ToLower().Contains(searchTextBox))
-                                DownloadsListBox.Items.Add(t);
-                    }
+                    filtered = filtered.Where(t => t.Note.ToLower().Contains(searchTextBox));
                 }
+
+
+                switch (selectedPriceFilter)
+                {
+                    case "Latest":
+                        filtered = filtered.OrderByDescending(t => t.Date);
+                        break;
+                    case "Oldest":
+                        filtered = filtered.OrderBy(t => t.Date);
+                        break;
+                    case "Low":
+                        filtered = filtered.OrderBy(t => t.Amount);
+                        break;
+                    case "High":
+                        filtered = filtered.OrderByDescending(t => t.Amount);
+                        break;
+                }
+
+
+                foreach (var t in filtered)
+                    DownloadsListBox.Items.Add(t);
             }
-            catch (Exception ex) { }// тут виникає помилка яка не впливає на роботу програми, але якщо її не зловити вона не запуститься
+            catch (Exception ex)
+            {}
+            // тут виникає помилка яка не впливає на роботу програми, але якщо її не зловити вона не запуститься
         }
 
         private bool ValidateEmptyFields()
@@ -138,6 +144,14 @@ namespace TeamProject
             DownloadsListBox.Items.Clear();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
