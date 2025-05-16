@@ -135,11 +135,6 @@ namespace TeamProject
             }
         }
 
-        private void CategoryBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void ClearBtn(object sender, RoutedEventArgs e)
         {
             DownloadsListBox.Items.Clear();
