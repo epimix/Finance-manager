@@ -53,7 +53,7 @@ namespace TeamProject
                     else
                     {
                         foreach (var t in AllTran)
-                            if(t.Note.ToLower().Contains(searchTextBox))
+                            if (t.Note.ToLower().Contains(searchTextBox))
                                 DownloadsListBox.Items.Add(t);
                     }
                 }
@@ -74,15 +74,14 @@ namespace TeamProject
                     }
                 }
             }
-            catch (Exception ex) {  }// тут виникає помилка яка не впливає на роботу програми, але якщо її не зловити вона не запуститься
+            catch (Exception ex) { }// тут виникає помилка яка не впливає на роботу програми, але якщо її не зловити вона не запуститься
         }
-       
+
         private bool ValidateEmptyFields()
         {
             if (string.IsNullOrWhiteSpace(UrlTextBox.Text) || string.IsNullOrWhiteSpace(NoteBox.Text))
             {
                 UrlTextBox.Text = "";
-                NoteBox.Text = "";
                 return true;
             }
             if (string.IsNullOrWhiteSpace((CategoryBox.SelectedItem as ComboBoxItem)?.Content.ToString()) || string.IsNullOrWhiteSpace((TypeBox.SelectedItem as ComboBoxItem)?.Content.ToString()))
@@ -128,6 +127,17 @@ namespace TeamProject
                 DownloadsListBox.Items.Add(t);
             }
         }
+
+        private void CategoryBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ClearBtn(object sender, RoutedEventArgs e)
+        {
+            DownloadsListBox.Items.Clear();
+        }
+
 
     }
 }
