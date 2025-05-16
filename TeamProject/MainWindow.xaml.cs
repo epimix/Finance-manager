@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeamProject.Entities;
+using TeamProject.ChangeWind;
 using System.Windows.Interop;
 using Microsoft.VisualBasic;
 
@@ -144,14 +145,38 @@ namespace TeamProject
             DownloadsListBox.Items.Clear();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ChengeBtn(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var tr = button.DataContext as Transaction;
+
+            if (tr != null)
+            {
+                var editWindow = new EditWindow(tr);
+                if (editWindow.ShowDialog() == true)
+                {
+                }
+            }
+            FilterComboBox_SelectionChanged(null, null);
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DeletedBtn(object sender, RoutedEventArgs e)
         {
+            Button btn = sender as Button;
 
+            var item = btn.DataContext;
+
+            var dltItem = item as Transaction;
+
+            if (dltItem != null)
+            {
+                App.Db.Transactions.Remove(dltItem);
+                AllTran.Remove(dltItem);
+                DownloadsListBox.Items.Remove(dltItem);
+
+                MessageBox.Show($"Видаляємо запис...");
+            }
         }
     }
 }
