@@ -19,12 +19,12 @@
                     <TextBox BorderThickness="2" x:Name="UsernameTextBox" VerticalContentAlignment="Center" Width="220" Height="25" Margin="20,0,5,0" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                    <Label Content="Password:" VerticalAlignment="Center" Width="80" FontSize="14" FontWeight="Bold"  />
-                    <TextBox BorderThickness="2" x:Name="PasswordTextBox" VerticalContentAlignment="Center" Width="220" Height="25" Margin="20,0,5,0" />
-                </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <Label Content="Password:" VerticalAlignment="Center" Width="80" FontSize="14" FontWeight="Bold"  />
+                <TextBox BorderThickness="2" x:Name="PasswordTextBox" VerticalContentAlignment="Center" Width="220" Height="25" Margin="20,0,5,0" />
             </StackPanel>
+        </StackPanel>
         <Button Grid.Row="2" Background="#FFCECECE" FontSize="18" FontWeight="Bold">Login</Button>
     </Grid>
     </Window>

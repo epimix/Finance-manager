@@ -21,13 +21,27 @@ namespace TeamProject
     public partial class MainWindow : Window
     {
         List<Transaction> AllTran;
+        User user;
         public MainWindow()
         {
-            InitializeComponent();
+
             FilterComboBox.SelectedIndex = 0;
             AllTran = App.Db.Transactions.ToList();
             DownloadTransactions();
             FilterComboBox.SelectionChanged += FilterComboBox_SelectionChanged;
+
+        }
+        public MainWindow(string login, string Password)
+        {
+            InitializeComponent();
+            var user = new User
+            {
+                Login = login,
+                Password = Password
+            };
+            App.Db_user.Users.Add(user);
+            App.Db_user.SaveChanges();
+
 
         }
         private void myTextBox_TextChanged(object sender, TextChangedEventArgs e)
