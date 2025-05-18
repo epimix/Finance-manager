@@ -18,7 +18,7 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                 <Label Content="Enter amount:" VerticalAlignment="Center" Width="125" FontSize="16" FontWeight="Bold" Foreground="White" />
                 <TextBox BorderThickness="2" x:Name="UrlTextBox" Width="120" Height="25" BorderBrush="#FF2D75FF"/>
-                <ComboBox BorderThickness="2" x:Name="CategoryBox" Width="150" Margin="5" SelectionChanged="CategoryBox_SelectionChanged">
+                <ComboBox BorderThickness="2" x:Name="CategoryBox" Width="150" Margin="5">
                     
                     <ComboBoxItem Content="Food"/>
                     <ComboBoxItem Content="Transport"/>

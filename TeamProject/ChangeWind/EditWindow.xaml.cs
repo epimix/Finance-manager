@@ -28,15 +28,17 @@ namespace TeamProject.ChangeWind
 
             AmountBox.Text = tr.Amount.ToString();
             NoteBox.Text = tr.Note;
+            FilterComboBox.Text = tr.type;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show(FilterComboBox.Text);
             if (decimal.TryParse(AmountBox.Text, out var amount))
             {
                 TranToEdit.Amount = amount;
                 TranToEdit.Note = NoteBox.Text;
+                TranToEdit.type = FilterComboBox.Text;
 
                 DialogResult = true;
                 Close();
