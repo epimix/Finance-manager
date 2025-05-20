@@ -13,6 +13,7 @@ using TeamProject.Entities;
 using TeamProject.ChangeWind;
 using System.Windows.Interop;
 using Microsoft.VisualBasic;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace TeamProject
 {
@@ -22,30 +23,17 @@ namespace TeamProject
     public partial class MainWindow : Window
     {
         List<Transaction> AllTran;
-        User user;
-        public MainWindow()
+        User user_auto;
+        public MainWindow(User user)
         {
 
-
-
-        }
-        public MainWindow(string login, string Password)
-        {
             InitializeComponent();
-            //
             FilterComboBox.SelectedIndex = 0;
             AllTran = App.Db.Transactions.ToList();
-            DownloadTransactions();
+            user_auto = user;
+            DownloadTransactions(user);
             FilterComboBox.SelectionChanged += FilterComboBox_SelectionChanged;
-            //
-            //переніс цей шматок для завантаження транзакцій при старту вікна
-            var user = new User
-            {
-                Login = login,
-                Password = Password
-            };
-            App.Db_user.Users.Add(user);
-            App.Db_user.SaveChanges();
+            InitializeComponent();
 
 
         }
@@ -128,6 +116,7 @@ namespace TeamProject
             {
                 Amount = Convert.ToDecimal(UrlTextBox.Text),
                 Date = DateTime.Now,
+                UserId = user_auto.Id,
                 type = TypeBox.Text,
                 Note = NoteBox.Text,
                 Category = CategoryBox.Text,
@@ -144,12 +133,14 @@ namespace TeamProject
 
             MessageBox.Show("Транзакція успішно додана!");
         }
-        private void DownloadTransactions()
+        private void DownloadTransactions(User user)
         {
-            //var all = App.Db.Transactions.ToList();
             foreach (var t in AllTran)
             {
-                DownloadsListBox.Items.Add(t);
+                if(t.UserId == user.Id)
+                {
+                    DownloadsListBox.Items.Add(t);
+                }
             }
         }
 

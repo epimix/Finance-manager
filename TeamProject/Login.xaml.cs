@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TeamProject.Entities;
 
 namespace TeamProject
 {
@@ -22,6 +23,32 @@ namespace TeamProject
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void Login_btn(object sender, RoutedEventArgs e)
+        {
+            string Login = UsernameTextBox.Text;
+            string password = PasswordTextBox.Text;
+            var user = new User
+            {
+                Login = Login,
+                Password = password
+            };
+            foreach (var u in App.Db_user.Users)
+            {
+                if (u.Login == user.Login && u.Password == user.Password)
+                {
+                    user.Id = u.Id;
+                    enter_acc(user);
+                    break;
+                }
+            }
+        }
+        private void enter_acc(User user)
+        {
+            var mainWindow = new MainWindow(user);
+            mainWindow.Show();
+            this.Close();
         }
     }
 }
