@@ -25,15 +25,19 @@ namespace TeamProject
         public MainWindow()
         {
 
-            FilterComboBox.SelectedIndex = 0;
-            AllTran = App.Db.Transactions.ToList();
-            DownloadTransactions();
-            FilterComboBox.SelectionChanged += FilterComboBox_SelectionChanged;
+
 
         }
         public MainWindow(string login, string Password)
         {
             InitializeComponent();
+            //
+            FilterComboBox.SelectedIndex = 0;
+            AllTran = App.Db.Transactions.ToList();
+            DownloadTransactions();
+            FilterComboBox.SelectionChanged += FilterComboBox_SelectionChanged;
+            //
+            //переніс цей шматок для завантаження транзакцій при старту вікна
             var user = new User
             {
                 Login = login,
