@@ -12,6 +12,7 @@ namespace TeamProject.Entities
         public int Id { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
+        public decimal UserId { get; set; } // додав привязку до акаунта котрий додає транзакції
         public string Note { get; set; }
 
         public string type { get; set; }

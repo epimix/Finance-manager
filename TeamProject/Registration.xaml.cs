@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TeamProject.Entities;
 
 namespace TeamProject
 {
@@ -30,10 +31,30 @@ namespace TeamProject
         {
             string Login = UsernameTextBox.Text;
             string password = PasswordBox.Password;
+            bool is_registered = false;
+            var user = new User
+            {
+                Login = Login,
+                Password = password
+            };
+            foreach (var u in App.Db_user.Users) //прохожусь по базі в пошуках однакових імені та пароля
+            {
+                    if (u.Login == user.Login && u.Password == user.Password)
+                    {
+                        MessageBox.Show("this user already exist!");
+                        is_registered = true;
+                        break;
+                    }
+            }
+            if(is_registered == false)
+            {
+                App.Db_user.Add(user);
+                App.Db_user.SaveChanges();
+                var mainWindow = new MainWindow(user);
+                mainWindow.Show();
+                this.Close();
+            }
 
-            var mainWindow = new MainWindow(Login, password);
-            mainWindow.Show();
-            this.Close();
         }
         private void TogglePasswordVisibility_Click(object sender, RoutedEventArgs e)
         {
